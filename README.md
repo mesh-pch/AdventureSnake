@@ -17,7 +17,7 @@
 
 ### 1. 克隆项目 
 ```bash
-git clone [repository-url]
+git clone https://github.com/mesh-pch/AdventureSnake.git
 cd snake-game
 ```
 
@@ -74,19 +74,21 @@ python app.py
 - 道具获取：随机概率（0.5%）
 
 ## 项目结构
-snake_game/
-├── app.py # Flask应用主文件
-├── database.py # 数据库操作
-├── static/
-│ ├── css/
-│ │ └── style.css # 样式文件
-│ └── js/
-│ └── game.js # 游戏核心逻辑
-└── templates/
-├── login.html # 登录页面
-├── register.html # 注册页面
-└── game.html # 游戏主页面
 
+```
+snake_game/
+├── app.py                 # Flask应用主文件
+├── database.py           # 数据库操作
+├── static/
+│   ├── css/
+│   │   └── style.css    # 样式文件
+│   └── js/
+│       └── game.js      # 游戏核心逻辑
+└── templates/
+    ├── login.html       # 登录页面
+    ├── register.html    # 注册页面
+    └── game.html        # 游戏主页面
+```
 
 ## 系统要求
 
