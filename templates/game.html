@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>贪食蛇游戏</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div id="level-select" class="level-select">
+        <h2>选择关卡</h2>
+        <div class="level-grid">
+            {% for i in range(1, max_level + 1) %}
+                <div class="level-item {% if i <= unlocked_level %}unlocked{% else %}locked{% endif %}"
+                     data-level="{{ i }}">
+                    关卡 {{ i }}
+                    {% if high_scores[i] %}
+                    <div class="high-score">最高分: {{ high_scores[i] }}</div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div id="game-container" class="game-container hidden">
+        <div class="header">
+            <div class="level-select-dropdown">
+                <select id="levelSelect">
+                    {% for i in range(1, unlocked_level + 1) %}
+                        <option value="{{ i }}" {% if i == current_level %}selected{% endif %}>关卡 {{ i }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <span>分数: <span id="score">0</span></span>
+            <span>关卡: <span id="level">{{ current_level }}</span></span>
+            <a href="{{ url_for('logout') }}" class="logout-btn">退出登录</a>
+        </div>
+        
+        <!-- 添加道具信息面板 -->
+        <div class="powerup-info">
+            <h3>道具库</h3>
+            <div class="powerup-list">
+                <div class="powerup-item">
+                    <span class="powerup-icon">🔄</span>
+                    <span class="powerup-name">复活</span>
+                    <span class="powerup-count" id="powerup-revive">0</span>
+                </div>
+                <div class="powerup-item">
+                    <span class="powerup-icon">⏱️</span>
+                    <span class="powerup-name">减速</span>
+                    <span class="powerup-count" id="powerup-slow">0</span>
+                </div>
+                <div class="powerup-item">
+                    <span class="powerup-icon">✨</span>
+                    <span class="powerup-name">得分翻倍</span>
+                    <span class="powerup-count" id="powerup-double">0</span>
+                </div>
+            </div>
+        </div>
+        
+        <canvas id="gameCanvas"></canvas>
+    </div>
+    <script src="{{ url_for('static', filename='js/game.js') }}"></script>
+</body>
+</html> 
